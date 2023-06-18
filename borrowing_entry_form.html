@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Borrowing Entry Form</title>
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+    }
+    .form-group button {
+      padding: 10px 20px;
+    }
+    .borrowing-list {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Borrowing Entry Form</h2>
+    <form id="borrowingForm">
+      <div class="form-group">
+        <label for="borrowingId">Borrowing ID:</label>
+        <input type="text" id="borrowingId" name="borrowingId" required>
+      </div>
+      <div class="form-group">
+        <label for="bookId">Book ID:</label>
+        <input type="text" id="bookId" name="bookId" required>
+      </div>
+      <div class="form-group">
+        <label for="memberId">Member ID:</label>
+        <input type="text" id="memberId" name="memberId" required>
+      </div>
+      <div class="form-group">
+        <label for="borrowDate">Borrow Date:</label>
+        <input type="date" id="borrowDate" name="borrowDate" required>
+      </div>
+      <div class="form-group">
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+      </div>
+      <div class="form-group">
+        <label for="fineAmount">Fine Amount:</label>
+        <input type="number" id="fineAmount" name="fineAmount" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Add Borrowing</button>
+      </div>
+    </form>
+    <div class="borrowing-list">
+      <h3>Borrowing List:</h3>
+      <ul id="borrowingList"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById('borrowingForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form input values
+      var borrowingId = document.getElementById('borrowingId').value;
+      var bookId = document.getElementById('bookId').value;
+      var memberId = document.getElementById('memberId').value;
+      var borrowDate = document.getElementById('borrowDate').value;
+      var returnDate = document.getElementById('returnDate').value;
+      var fineAmount = document.getElementById('fineAmount').value;
+
+      // Create a new borrowing entry
+      var borrowingEntry = document.createElement('li');
+      borrowingEntry.textContent = 'Borrowing ID: ' + borrowingId + ', Book ID: ' + bookId + ', Member ID: ' + memberId + ', Borrow Date: ' + borrowDate + ', Return Date: ' + returnDate + ', Fine Amount: ' + fineAmount;
+
+      // Append borrowing entry to the list
+      document.getElementById('borrowingList').appendChild(borrowingEntry);
+
+      // Reset form inputs
+      document.getElementById('borrowingForm').reset();
+    });
+  </script>
+</body>
+</html>
